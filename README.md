@@ -1,9 +1,3 @@
-##################################################################
-
-WARNING: No longer online due to the end of free tiers on Heroku.
-
-##################################################################
-
 LANDING PAGE + BLOG - FULL NODE JS + MONGO DB
 
 A business (dentistry) landing page, w/ link to a blog on the same domain using a NodeJS server.
@@ -14,11 +8,11 @@ Mode: Development / tests
 
 ***********************************
 
-Deployed on Heroku
+Deployed on Back4App
 
-Landing Page: https://blog-dental.herokuapp.com/
+Landing Page: https://odontopageblog.b4a.app
 
-Blog: https://blog-dental.herokuapp.com/blog
+Blog: https://odontopageblog.b4a.app/blog
 
 ***********************************
 Landing Page features:

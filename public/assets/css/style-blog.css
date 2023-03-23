@@ -6,7 +6,7 @@
 
 :root {
    --main-color: rgb(241, 241, 241);
-   --second-color: rgba(197, 238, 245, 0.95);
+   --second-color: rgba(120, 204, 219, 0.95);
    --font-color-1: #00529f;
    --font-color-2: rgb(39, 174, 212);
    --border-gray: #d3d3d3;
@@ -425,8 +425,8 @@ input[type="search"] {
 .categ-single:hover,
 .post-single:active,
 .categ-single:active {
-   transition: 0.7s;
-   background-color: rgb(228, 247, 250);
+   transition: 0.9s;
+   background-color: rgb(181, 220, 226);
 }
 
 .post-single p {
