@@ -1,0 +1,25 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-categ">
+	<div class="container">
+		<h1>Mudança de senha</h1>
+		<%- include('../includes/messages') %>
+		<div class="card">
+			<div class="card-inner">
+				<form action="/blog/admin/gen_code" method="POST">
+					<%- include('../includes/csrf') %>
+					<p>Ao inserir o seu email associado à conta de administrador, você receberá um código para validar a mudança de senha.</p>
+					<br>
+					<label for="email">Email vinculado à conta: </label>
+					<input type="email" name="email" placeholder="E-mail cadastrado" required>
+					<button type="submit" class="btn-send">Receber código</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

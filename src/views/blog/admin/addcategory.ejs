@@ -1,0 +1,25 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-categ">
+	<div class="container">
+		<h1>Adicione ou exclua categorias</h1>
+		<a href="/blog/admin"><button class="btn btn-back">Voltar</button></a>
+		<%- include('../includes/messages') %>
+		<div class="card">
+			<div class="card-inner">
+				<form action="/blog/admin/categories/new" method="POST">
+					<%- include('../includes/csrf') %>
+					<label for="nome">Nome: </label>
+					<input type="text" name="name" placeholder="Nome da categoria" maxlength="16" required>
+					<p class="warning">*Máximo: 16 caracteres.</p>
+					<button type="submit" class="btn-send">Criar categoria</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

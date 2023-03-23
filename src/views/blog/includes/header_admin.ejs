@@ -1,0 +1,42 @@
+<header class="height-1">
+	<div class="flexbox header-flex">
+		<div class="header-left">
+			<img draggable="false"
+				src="/assets/media/logo_odonto_topo.png"/>
+		</div>
+		<div class="header-right">
+			<div class="icon-menu-mob">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</div>
+			<!--sm-icons-->
+
+			<nav class="menu-desktop">
+				<ul>
+					<li><a href="/blog/admin">Início</a></li>
+					<li><a href="/">Página da clínica</a></li>
+					<% if (user) { %>
+						<li><a href="/blog/admin/user">Minha conta</a></li>
+						<li><a href="/blog/admin/logout">Sair</a></li>
+					<% } %>
+				</ul>
+			</nav>
+
+			<nav class="menu-mobile">
+				<ul>
+					<li><a href="/blog/admin">Início</a></li>
+					<li><a href="/">Página da clínica</a></li>
+					<li><a href="/blog/admin#anch-categ">Categorias</a></li>
+					<% if (user) { %>
+						<li><a href="/blog/admin/user">Minha conta</a></li>
+						<li><a href="/blog/admin/logout">Sair</a></li>
+					<% } %>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<div class="fix-header"></div>
+<% if (user) { %>
+	<p>Você está logado como "<%=user.name%>"</p>
+<% } %>

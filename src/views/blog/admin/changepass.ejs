@@ -1,0 +1,32 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-categ">
+	<div class="container">
+		<h1>Mudança de senha</h1>
+		<%- include('../includes/messages') %>
+		<div class="card">
+			<div class="card-inner">
+				<form action="/blog/admin/change_pass" method="POST">
+					<%- include('../includes/csrf') %>
+					<input type="hidden" name="id" value="<%=uid%>">
+					<label for="code">Código recebido por email: </label>
+					<input class="input-token" type="number" name="code" minlength="6" maxlength="6">
+					<br>
+					<label for="password_new">Digite sua NOVA senha: </label>
+					<input type="password" name="password_new" minlength="8" maxlength="16">
+					<p class="warning">*Senha deve conter no mínimo 8 caracteres e no máximo 16 caracteres, dentre letras, números e caracteres especiais.</p>
+					<br>
+					<label for="password_rep">Confirme a NOVA senha: </label>
+					<input type="password" name="password_rep" minlength="8" maxlength="16" required>
+					
+					<button type="submit" class="btn-send">Alterar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

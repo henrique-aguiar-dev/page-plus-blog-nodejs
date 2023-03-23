@@ -1,0 +1,27 @@
+<div class="sidebar">
+
+	<div class="search-box search-desktop">
+		<form action="/blog/search" method="POST">
+			<%- include('./csrf') %>
+			<input type="search" name="search" placeholder="Buscar no blog..." required>
+			<button type="submit" class="btn btn-send">Buscar</button>
+		</form>
+	</div>
+
+	<div class="categ-box">
+		<anchor id="anch-categ"></anchor>
+		<h2>Categorias</h2>
+		<div class="categ-inner">
+			<% if (categories.length > 0) { %>
+				<% categories.forEach(categ => { %>
+					<div class="categ-single categ-sidebar">
+						<p><a href="/blog/categories/<%=categ.slug%>"><%=categ.nome%></a><small> (<%=categ.num_posts%>)</small></p>
+					</div>
+				<% }) %>
+			<% } else {%>
+				<h4>Nenhuma categoria registrada.</h4>
+			<% } %>
+		</div>
+	</div>
+
+</div>

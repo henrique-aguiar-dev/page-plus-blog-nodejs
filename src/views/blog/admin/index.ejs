@@ -1,0 +1,87 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-post">
+	<div class="container">
+		<%- include('../includes/messages') %>
+		<div class="flexbox">
+
+			<div class="posts-outer posts-outer-admin">
+				<h2>Postagens</h2>
+				<% if (posts && posts.length > 0) { %>
+					<% posts.forEach(post => { %>
+						<div class="post-single">
+							<a target="_blank" href="/blog/post/<%=post.slug%>"><h3><%=post.titulo%></h3></a>
+							<br>
+							<small>Categoria: <a target="_blank" href="/blog/categories/<%=post.categoria.slug%>"><%=post.categoria.nome%></a></small>
+							<br>
+							<small>Autor: <%=post.autor.nome%></small>
+							<br>
+							<small>Data: <%=post.data%></small>
+							<br>
+							<div class="post-box">
+								<div class="post-img">
+									<img src="<%=post.img%>">
+								</div>
+								<div class="post-text">
+									<p><%=post.resumo%> [...]</p>
+									<p><a class="read-more" target="_blank" href="/blog/post/<%=post.slug%>"> Leia mais</a></p>
+								</div>
+							</div>
+							<a class="btn btn-edit" href="/blog/admin/posts/edit/<%=post._id%>">Editar</a>
+							<button class="btn btn-delete open-confirm">Excluir</button>
+							<div class="confirm-del">
+								<form action="/blog/admin/posts/delete" method="POST">
+									<p>Confirma a exclusão da postagem: "<em><%=post.titulo%>"</em>? <strong>Não será possível desfazer esta ação</strong>.</p>
+									<%- include('../includes/csrf') %>
+									<input type="hidden" name="id" value="<%=post._id%>">
+									<button type="submit" class="btn btn-edit btn-confirm">Confirmar</button>
+								</form>
+								<button class="btn btn-delete close-abort">Não</button>
+							</div>
+						</div>
+					<% }) %>
+				<% } else {%>
+					<h4>Nenhuma postagem.</h4>
+				<% } %>
+
+				<a href="/blog/admin/posts/add"><button class="btn btn-send">Nova postagem</button></a>
+			</div>
+			
+			<div class="categ-box-admin">
+				<anchor id="anch-categ"></anchor>
+				<h2>Lista de categorias</h2>
+				<div class="categ-inner">
+					<p class="warning">Excluir uma categoria fará com que as postagens vinculadas sejam incluídas na categoria "Sem categoria".</p>
+					<% if (categories.length > 0) { %>
+						<% categories.forEach(categ => { %>
+							<div class="categ-single">
+								<p><%=categ.nome%><small> (<%=categ.num_posts%>)</small></p>
+								<div class="buttons">
+									<% if (categ.nome !== 'Sem categoria') { %>
+										<a class="btn btn-edit" href="/blog/admin/categories/edit/<%=categ._id%>">Editar</a>
+										<form action="/blog/admin/categories/delete" method="POST">
+											<%- include('../includes/csrf') %>
+											<input type="hidden" name="id" value="<%=categ._id%>">
+											<button type="submit" class="btn btn-delete">Excluir</button>
+										</form>
+										
+									<% } %>
+								</div>
+							</div>
+						<% }) %>
+					<% } else {%>
+						<h4>Nenhuma categoria registrada.</h4>
+					<% } %>
+				</div>
+				<a href="/blog/admin/categories/add"><button class="btn btn-send">Nova categoria</button></a>
+			</div>
+		
+		</div><!--flexbox-->
+		
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

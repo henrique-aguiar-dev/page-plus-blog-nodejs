@@ -1,0 +1,27 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-categ">
+	<div class="container">
+		<h1>Editar categoria</h1>
+		<a href="/blog/admin"><button class="btn btn-back">Voltar</button></a>
+		<%- include('../includes/messages') %>
+
+		<div class="card">
+			<div class="card-inner">
+				<form action="/blog/admin/categories/edit" method="POST">
+					<%- include('../includes/csrf') %>
+					<input type="hidden" name="id" value="<%=category._id%>">
+					<label for="name">Nome: </label>
+					<input type="text" name="name" maxlength="16" value="<%=category.nome%>">
+					<p class="warning">*Máximo: 16 caracteres.</p>
+					<button type="submit" class="btn-send">Salvar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

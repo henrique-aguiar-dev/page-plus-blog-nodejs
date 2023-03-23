@@ -1,0 +1,35 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-categ">
+	<div class="container">
+		<h1>Crie um usuário administrador</h1>
+
+		<%- include('../includes/messages') %>
+		<div class="card card-login">
+			<div class="card-inner">
+				<form action="/blog/admin/create" method="POST">
+					<%- include('../includes/csrf') %>
+					<label for="name">Crie um nome de usuário: </label>
+					<input type="text" name="name" required>
+					<br>
+					<label for="email">Use um email válido: </label>
+					<input type="email" name="email" required>
+					<br>
+					<label for="password_new">Crie uma senha: </label>
+					<input type="password" name="password_new" minlength="8" maxlength="16" required>
+					<p class="warning">*Senha deve conter no mínimo 8 caracteres e no máximo 16 caracteres, dentre letras, números e caracteres especiais.</p>
+					<label for="password_rep">Confirme a senha: </label>
+					<input type="password" name="password_rep" minlength="8" maxlength="16" required>
+					
+					<button type="submit" class="btn-send">Criar</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

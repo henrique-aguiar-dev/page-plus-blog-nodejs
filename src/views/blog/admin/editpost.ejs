@@ -1,0 +1,60 @@
+<%- include('../includes/head_editor') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-post">
+	<div class="container">
+		<h1>Editar postagem</h1>
+		<a href="/blog/admin"><button class="btn btn-back">Voltar</button></a>
+		<%- include('../includes/messages') %>
+		<div class="create-edit-post">
+			<form action="/blog/admin/posts/edit" method="POST" enctype="multipart/form-data">
+				<%- include('../includes/csrf') %>
+				<input type="hidden" name="id" value="<%=post._id%>">
+				<label for="title">Título: </label>
+				<input type="text" name="title" value="<%=post.titulo%>" required>
+				<br>
+				<label for="postImg">Imagem / ilustração: </label>
+				<p>Imagem atual:</p>
+				<% if (post.img) { %>
+					<div class="img-edit-box">
+						<img class="img-edit-child" src="<%=post.img%>">
+						<a href="/blog/admin/posts/imgdel/<%=post._id%>" title="Excluir" ><span>X</span></a>
+					</div>
+				<% } else { %>
+					<p>Nenhuma</p>
+				<% } %>
+				<input type="file" id="postImg" name="postImg" >
+				<br>
+
+				<label for="category">Selecione uma categoria:</label>
+				<select name="category">
+					<% if (categories.length > 0) { %>
+						<% categories.forEach(categ => { %>					
+							<% if (categ._id.toString() === post.categoria.toString()) { %>
+								<option value="<%= categ.id %>" selected ><%= categ.nome %></option>
+							<% } else { %>
+								<option value="<%= categ._id %>"><%= categ.nome %></option>
+							<% } %>
+						<% }) %>
+					<% } else { %>
+						<option value="Sem categoria">Nenhuma categoria registrada</option>
+					<% } %>
+				</select>
+
+				<label for="content">Conteúdo:</label><br>
+				<textarea name="content" id="content" cols="60" rows="30" value="" required><%-post.conteudo%></textarea>
+				
+				<label for="summary">Resumo: *</label>
+				<textarea name="summary" id="summary" maxlength="400" cols="60" rows="6" required><%=post.resumo%></textarea>
+				<p class="warning">*Resumo a ser exibido na página inicial e feed RSS.</p>
+				
+				<button type="submit" class="btn-send">Salvar</button>
+			</form>
+
+		</div>
+	</div>
+</section>
+
+<%- include('../includes/footer_editor') %>

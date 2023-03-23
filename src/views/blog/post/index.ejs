@@ -1,0 +1,28 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header') %>
+
+<section class="read-post">
+	<div class="container">
+		<%- include('../includes/messages') %>
+		<a href="/blog"><button class="btn btn-back">Voltar</button></a>
+		<div class="flexbox">
+			<div class="card-reader">
+				<h1><%=post.titulo%></h1>
+				<small>Data de publicação: <%=post.data%></small>
+				<br>
+				<small>Categoria: <a href="/blog/categories/<%=category.slug%>"><%=category.nome%></a></small>
+				<br><br>
+				<div class="post-content">
+					<img class="post-thumb" src="<%=post.img%>">
+					<%-post.conteudo%>
+				</div>
+			</div>
+
+			<%- include('../includes/sidebar') %>
+
+		</div><!--flexbox-->
+		<a href="/blog"><button class="btn btn-back">Voltar</button></a>
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

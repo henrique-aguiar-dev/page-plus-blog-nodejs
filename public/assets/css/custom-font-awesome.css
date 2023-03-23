@@ -1,0 +1,72 @@
+/*!
+ * Font Awesome Free 5.13.1 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+/*I've got only what i wanted*/
+
+@font-face {
+   font-family: "FontAwesome";
+   src: url("../fonts/fontawesome-webfont.eot");
+   src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0")
+         format("embedded-opentype"),
+      url("../fonts/fontawesome-webfont.woff2") format("woff2"),
+      url("../fonts/fontawesome-webfont.woff") format("woff"),
+      url("../fonts/fontawesome-webfont.ttf") format("truetype"),
+      url("../fonts/fontawesome-webfont.svg?") format("svg");
+   font-weight: normal;
+   font-style: normal;
+}
+
+.fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab {
+   font-family: "FontAwesome";
+   -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+   display: inline-block;
+   font-style: normal;
+   font-variant: normal;
+   text-rendering: auto;
+   line-height: 1;
+}
+
+.fa-times:before {
+   content: "\f00d";
+}
+
+.fa-bars:before {
+   content: "\f0c9";
+}
+
+.fa-facebook-f:before,
+.fa-facebook:before {
+   content: "\f09a";
+}
+
+.fa-instagram:before {
+   content: "\f16d";
+}
+
+.fa-whatsapp:before {
+   content: "\f232";
+}
+
+.fa-phone:before {
+   content: "\f095";
+}
+
+.fa-chevron-left:before {
+   content: "\f053";
+}
+
+.fa-chevron-right:before {
+   content: "\f054";
+}
+
+.fa-search:before {
+   content: "\f002";
+}

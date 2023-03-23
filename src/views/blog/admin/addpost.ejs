@@ -1,0 +1,85 @@
+<%- include('../includes/head_editor') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-post">
+	<div class="container">
+		<h1>Crie uma nova postagem</h1>
+		<a href="/blog/admin"><button class="btn btn-back">Voltar</button></a>
+		<%- include('../includes/messages') %>
+		<div class="create-edit-post">
+			
+			<form action="/blog/admin/posts/new" method="POST" enctype="multipart/form-data">
+				<%- include('../includes/csrf') %>
+				<!--If an error occur during creation = recover-->
+				<% if(user.posting) { %>
+					<label for="title">Título: </label>
+					<input type="text" id="title" name="title" value="<%= user.posting.title %>" required>
+					<br>
+					<label for="postImg">Imagem / ilustração: </label>
+					<input type="file" id="postImg" name="postImg" value="<%= user.posting.postImg %>" >
+					<br>
+
+					<label for="category">Selecione uma categoria:</label>
+					<select name="category" required>
+						<% if (categories.length > 0) { %>
+							<% categories.forEach(categ => { %>
+								<% if (categ.nome === 'Sem categoria') { %>
+									<option value="<%= categ._id %>" selected><%= categ.nome %></option>
+								<% } else { %>
+									<option value="<%= categ._id %>"><%= categ.nome %></option>
+								<% } %>
+							<% }) %>
+						<% } else { %>
+							<option value="Nenhuma categoria">Nenhuma categoria registrada</option>
+						<% } %>
+					</select>
+
+					<label for="content">Conteúdo:</label><br>
+					<textarea name="content" id="content" cols="60" rows="30" required><%- user.posting.content %></textarea>
+					
+					<label for="summary">Resumo: *</label>
+					<textarea name="summary" id="summary" maxlength="400" cols="60" rows="6" required><%- user.posting.summary %></textarea>
+					<p class="warning">*Resumo a ser exibido na página inicial e feed RSS.</p>
+				<% } else if (!user.posting) { %>
+					<label for="title">Título: </label>
+					<input type="text" id="title" name="title" placeholder="Título" required>
+					<br>
+					<label for="postImg">Imagem / ilustração: </label>
+					<input type="file" id="postImg" name="postImg" placeholder="Selecione uma imagem" >
+					<br>
+
+					<label for="category">Selecione uma categoria:</label>
+					<select name="category" required>
+						<% if (categories.length > 0) { %>
+							<% categories.forEach(categ => { %>
+								<% if (categ.nome === 'Sem categoria') { %>
+									<option value="<%= categ._id %>" selected><%= categ.nome %></option>
+								<% } else { %>
+									<option value="<%= categ._id %>"><%= categ.nome %></option>
+								<% } %>
+							<% }) %>
+						<% } else { %>
+							<option value="Nenhuma categoria">Nenhuma categoria registrada</option>
+						<% } %>
+					</select>
+
+					<label for="content">Conteúdo:</label><br>
+					<textarea name="content" id="content" cols="60" rows="30" required></textarea>
+					
+					<label for="summary">Resumo: *</label>
+					<textarea name="summary" id="summary" maxlength="400" cols="60" rows="6" required></textarea>
+					<p class="warning">*Resumo a ser exibido na página inicial e feed RSS.</p>
+				<% } %>
+
+				
+				
+				<button type="submit" class="btn-send">Criar postagem</button>
+			</form>
+
+		</div>
+	</div>
+</section>
+
+<%- include('../includes/footer_editor') %>

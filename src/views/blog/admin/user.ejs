@@ -1,0 +1,46 @@
+<%- include('../includes/head') %>
+<%- include('../includes/header_admin') %>
+
+<h1>Painel do administrador</h1>
+
+<section class="add-categ">
+	<div class="container">
+		<h2>Dados do administrador</h2>
+
+		<%- include('../includes/messages') %>
+		<div class="card card-login">
+			<div class="card-inner">
+				<div class="user-data">
+					<h4>Nome de usuário:</h4>
+					<p><%=user.name%></p>
+					<br>
+					<h4>Email:*</h4>
+					<p><%=user.email%></p>
+					<br>
+					<br>
+				</div>
+				<h4>Alterar dados:</h4>
+				<p class="warning">*Para alterar o e-mail contate o desenvolvedor.</p>
+				<form action="/blog/admin/user/edit" method="POST">
+					<%- include('../includes/csrf') %>
+					<input type="hidden" name="id" value="<%=user._id%>">
+					<label for="name">Altere o nome de usuário: </label>
+					<input type="text" name="name" value="<%=user.name%>" required>
+					<br>
+					<label for="password">Digite sua senha ATUAL: </label>
+					<input type="password" name="password" minlength="8" maxlength="16" required>
+					<label for="password_new">Digite sua NOVA senha: </label>
+					<p class="warning">*Se não quiser alterar a senha, não preencha esse campo.</p>
+					<input type="password" name="password_new" minlength="8" maxlength="16">
+					<p class="warning">*Senha deve conter no mínimo 8 caracteres e no máximo 16 caracteres, dentre letras, números e caracteres especiais.</p>
+					<label for="password_rep">Confirme a NOVA senha: </label>
+					<input type="password" name="password_rep" minlength="8" maxlength="16">
+					
+					<button type="submit" class="btn-send">Salvar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<%- include('../includes/footer') %>

@@ -1,0 +1,45 @@
+<%- include('./includes/head') %>
+<%- include('./includes/header') %>
+
+<section class="show-posts">
+	<div class="container">
+		<%- include('includes/messages') %>
+		<a href="/blog"><button class="btn btn-back">Voltar</button></a>
+		<div class="flexbox">
+
+			<div class="posts-outer">
+				<h2>Resultados da busca por "<%=terms%>":</h2>
+				<% if (result.length > 0) { %>
+					<% result.forEach(post => { %>
+						<div class="post-single">
+							<h3><a href="/blog/post/<%=post.slug%>"><%=post.titulo%></a></h3>
+							<br>
+							<small>Categoria: <a href="/blog/categories/<%=category.slug%>"><%=category.nome%></a></small>
+							<br>
+							<small>Data: <%=post.data%></small>
+							<br>
+							<div class="post-box">
+								<div class="post-img">
+									<img src="<%=post.img%>">
+								</div>
+								<div class="post-text">
+									<p><%=post.resumo%> [...]</p>
+									<p><a class="read-more" href="/blog/post/<%=post.slug%>"> Leia mais</a></p>
+								</div>
+							</div>
+						</div>
+					<% }) %>
+				<% } else {%>
+					<h4>Nenhuma postagem encontrada.</h4>
+				<% } %>
+
+			</div><!--posts-outer-->
+
+			<%- include('./includes/sidebar') %>
+		
+		</div><!--flexbox-->
+		
+	</div>
+</section>
+
+<%- include('./includes/footer') %>
