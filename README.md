@@ -10,9 +10,9 @@ Mode: Development / tests
 
 Deployed on Back4App
 
-Landing Page: https://odontopageblog.b4a.app
+Landing Page: https://odontopageblog-soslhti.b4a.run/
 
-Blog: https://odontopageblog.b4a.app/blog
+Blog: https://odontopageblog-soslhti.b4a.run/blog
 
 ***********************************
 Landing Page features:
