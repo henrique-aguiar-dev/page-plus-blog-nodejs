@@ -1,4 +1,4 @@
-LANDING PAGE + BLOG - FULL NODE JS + MONGO DB
+LANDING PAGE + BLOG: FULL NODE JS + MONGO DB
 
 A business (dentistry) landing page, w/ link to a blog on the same domain using a NodeJS server.
 
