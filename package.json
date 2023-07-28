@@ -34,7 +34,7 @@
     "express-rate-limit": "^5.3.0",
     "express-session": "^1.17.2",
     "html-to-text": "^8.0.0",
-    "mongoose": "^5.13.2",
+    "mongoose": "^5.13.20",
     "nodemailer": "^6.6.3",
     "regenerator-runtime": "^0.13.7",
     "validator": "^13.6.0"
